@@ -9,12 +9,20 @@ crate-type = ["cdylib", "lib"]
 name = "sponge_pool"
 
 [features]
-default = []
-cpi = ["no-entrypoint"]
+
 no-entrypoint = []
 no-idl = []
 no-log-ix-name = []
-idl-build = ["anchor-lang/idl-build"]
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+cpi = ["no-entrypoint"]
+default = []
 
 [dependencies]
-anchor-lang = "0.30.1"
+anchor-lang = { git = "https://github.com/coral-xyz/anchor.git", features = ["init-if-needed"] }
+anchor-spl = { git = "https://github.com/coral-xyz/anchor.git" }
+getrandom = { version = "0.2.9", features = ["custom"] }
+solana-program = "=1.14.17"
+winnow="=0.4.1"
+toml_datetime="=0.6.1"
+constant-product-curve = { git = "https://github.com/deanmlittle/constant-product-curve.git" }
+proc-macro2 = "1.0.87"
